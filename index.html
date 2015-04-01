@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="bower_components/angular/angular.js"></script>
+    <link rel="stylesheet" href="base.css"/>
+    <script>
+        angular.module('myApp', []).controller('HelloWorldControler', function ($scope) {
+           $scope.user = {
+               name: 'Mansi',
+               id: 'asdf45545-asd2f14s5a6d4f'
+           };
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="HelloWorldControler">
+        Hello from {{user.name}}
+
+        <input type="text" ng-model="user.name"/>
+    </div>
+</body>
+</html>
