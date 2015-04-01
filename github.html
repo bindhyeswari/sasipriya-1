@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="base.css"/>
+    <title></title>
+    <script src="bower_components/angular/angular.js"></script>
+    <script>
+        angular.module('myApp', []).controller('GithubController', function ($scope) {
+            $scope.message = 'OK';
+            $scope.search = function (event) {
+                if (event.keyCode === 13) {
+                    console.log($scope.message);
+                    searchForTerm($scope.message);
+                }
+
+                function searchForTerm(term) {
+                    // make an ajax call
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('GET', 'https://api.github.com/search/repositories?q=' + term);
+                    xhr.setRequestHeader('accept', 'application/json');
+                    xhr.addEventListener('readystatechange', function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            var obj = JSON.parse(xhr.responseText);
+                            console.log(obj);
+                            $scope.$apply(function () {
+                                $scope.result = obj;
+                            });
+                        }
+                    });
+                    xhr.send();
+                }
+            };
+
+            // how to use $scope.apply
+            // ng-repeat
+            // todo: in your scope, setInterval, $scope.data = [] ; 1,2,3,4; ng-repeat in li,
+            // $interval
+            // Provide a list of all the events that AngularJS provides access to
+
+
+        });
+    </script>
+</head>
+<body>
+    <div ng-controller="GithubController">
+        <input type="text" ng-model="message" ng-keydown="search($event)"/>
+        <div>
+            <h3>The total number of repositories found: {{result.total_count}}</h3>
+        </div>
+    </div>
+</body>
+</html>
