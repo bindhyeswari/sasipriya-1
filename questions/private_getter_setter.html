@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+
+        function Person(name) {
+            var _name = name; // private variable
+
+            Object.defineProperty(this, 'name', {
+                enumerable: false,
+                get: function () {
+                    return _name;
+                }
+            });
+        }
+
+        var mansi = new Person('Mansi');
+        console.log(mansi.name);
+        mansi.name = 'Sasi';
+        console.log(mansi.name);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

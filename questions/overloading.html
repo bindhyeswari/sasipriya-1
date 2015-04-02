@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script>
+
+
+        function misc() {
+            if (arguments.length === 2) return sum.apply(null, arguments);
+            else if (arguments.length === 1) return sum.bind(null, arguments[0]);
+        }
+
+        function sum (x, y) {
+            return x + y;
+        }
+
+        console.log(misc(10,11));
+        console.log(misc(10));
+
+        var obj = {
+            name: 'Mansi',
+            sayHello: function (salutation) {
+                console.log( salutation + ' from ' + this.name);
+            }
+        };
+
+        var x = {
+            name: 'Sasipriya'
+        };
+
+        obj.sayHello();
+        obj.sayHello.call(x, 'Hello');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

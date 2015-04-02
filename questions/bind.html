@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function sum(x, y) {
+            console.log(x + y);
+        }
+
+        sum.call(null, 1, 2);
+        sum.apply(null, [1, 2]);
+
+        var fn = sum.bind(null, 1, 2);
+        fn();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

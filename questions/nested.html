@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+
+        function createClosure(x) {
+            function test() {
+                return x++;
+            }
+            return test();
+        }
+
+        console.log(createClosure(10));
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
